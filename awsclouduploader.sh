@@ -7,8 +7,9 @@ AWS_DEFAULT_REGION="$AWS_DEFAULT_REGION"
 S3_BUCKET="$S3_BUCKET"
 
 # Check for required options
-if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$AWS_DEFAULT_REGION" ] || [ -z "$S3_BUCKET>  echo "AWS credentials and configuration not set. Please configure the script with your AWS details."
-  exit 1
+if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$AWS_DEFAULT_REGION" ] || [ -z "$S3_BUCKET" ]; then
+    echo "AWS credentials and configuration not set. Please configure the script with your AWS details."
+    exit 1
 fi
 
 #parse command-line arguments
@@ -18,7 +19,7 @@ storage_class="$3"
 
 #check if the file exists
 if [ ! -f "$filename" ]; then
-        echo "Error: File '$filename' not found."
+    echo "Error: File '$filename' not found."
     exit 1
 fi
 
@@ -31,4 +32,3 @@ if [ $? -eq 0 ]; then
 else
     echo "Error: Upload failed."
 fi
-
