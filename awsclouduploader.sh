@@ -12,23 +12,52 @@ if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$AWS_
     exit 1
 fi
 
-#parse command-line arguments
-filename="$1"
-target_directory="$2"
-storage_class="$3"
+# Parse command-line arguments
+command="$1"
+filename="$2"
+target_directory="$3"
 
-#check if the file exists
+# Check if the file exists
 if [ ! -f "$filename" ]; then
     echo "Error: File '$filename' not found."
     exit 1
 fi
 
-# Upload the file to S3
-aws s3 cp "$filename" "s3://$S3_BUCKET/$target_directory"
+# Define functions for adding and removing files
+add_file() {
+    # Upload the file to S3
+    aws s3 cp "$filename" "s3://$S3_BUCKET/$target_directory"
 
-# Provide feedback on the upload status
-if [ $? -eq 0 ]; then
-    echo "Upload successful!"
-else
-    echo "Error: Upload failed."
-fi
+    # Provide feedback on the upload status
+    if [ $? -eq 0 ]; then
+        echo "Upload successful!"
+    else
+        echo "Error: Upload failed."
+    fi
+}
+
+remove_file() {
+    # Delete the file from S3
+    aws s3 rm "s3://$S3_BUCKET/$filename"
+
+    # Provide feedback on the removal status
+    if [ $? -eq 0 ]; then
+        echo "File removed successfully!"
+    else
+        echo "Error: Failed to remove file."
+    fi
+}
+
+# Execute the appropriate function based on the command
+case "$command" in
+    -add)
+        add_file
+        ;;
+    -rm)
+        remove_file
+        ;;
+    *)
+        echo "Usage: $0 {-add|-rm} /path/to/your/file.txt [target_directory]"
+        exit 1
+        ;;
+esac
