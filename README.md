@@ -29,3 +29,9 @@ AWS_SECRET_ACCESS_KEY="your aws secret access key"
 AWS_DEFAULT_REGION="your aws default region"
 S3_BUCKET="your bucket name"
 ```
+
+* Example Usage
+
+```
+awsclouduploader.sh  /path/to/your/file.txt
+```
