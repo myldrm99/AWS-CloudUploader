@@ -2,7 +2,7 @@
 
 AWS CloudUploader is a simple command-line tool written in Bash for uploading and removing files from Amazon S3 buckets. It provides a convenient way to interact with your S3 storage directly from the terminal.
 
-## INSTALLATION
+## Installation
 How to install and configure the CloudUploader CLI Tool;
 
 * Clone the repository
