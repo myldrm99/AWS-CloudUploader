@@ -15,10 +15,16 @@ git clone https://github.com/myldrm99/AWS-CloudUploader
 cd AWS-CloudUploader
 ```
 
+* Add execute permissions to the script file
+
+```
+chmod +x install_awsclouduploader.sh
+```
+
 * Run the installation script
   
 ```
-./install_awsclouduploader.sh
+sudo ./install_awsclouduploader.sh
 ```
 
 * Configure the tool with your AWS credentials
