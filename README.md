@@ -3,7 +3,7 @@
 ## INSTALLATION
 How to install and configure the CloudUploader CLI Tool;
 
-* Clone this repository
+* Clone the repository
   
 ```
 git clone https://github.com/myldrm99/AWS-CloudUploader
@@ -27,7 +27,7 @@ chmod +x install_awsclouduploader.sh
 sudo ./install_awsclouduploader.sh
 ```
 
-* Configure the tool with your AWS credentials
+* Set your AWS credentials and configuration
   
 ```
 export AWS_ACCESS_KEY_ID="your_access_key_id"
