@@ -15,16 +15,15 @@ fi
 # Parse command-line arguments
 command="$1"
 filename="$2"
-target_directory="$3"
-
-# Check if the file exists
-if [ ! -f "$filename" ]; then
-    echo "Error: File '$filename' not found."
-    exit 1
-fi
 
 # Define functions for adding and removing files
 add_file() {
+    target_directory="$3"
+    # Check if the file exists
+    if [ ! -f "$filename" ]; then
+        echo "Error: File '$filename' not found."
+        exit 1
+    fi
     # Upload the file to S3
     aws s3 cp "$filename" "s3://$S3_BUCKET/$target_directory"
 
@@ -37,6 +36,11 @@ add_file() {
 }
 
 remove_file() {
+    # Check if the file exists in the S3 bucket
+    if aws s3 ls "s3://$S3_BUCKET/$filename" 2>&1 | grep -q 'NoSuchKey'; then
+        echo "Error: File '$filename' not found in the S3 bucket."
+        exit 1
+    fi
     # Delete the file from S3
     aws s3 rm "s3://$S3_BUCKET/$filename"
 
@@ -51,7 +55,7 @@ remove_file() {
 # Execute the appropriate function based on the command
 case "$command" in
     -add)
-        add_file
+        add_file "$@"
         ;;
     -rm)
         remove_file
