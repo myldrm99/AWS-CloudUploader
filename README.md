@@ -36,8 +36,15 @@ export AWS_DEFAULT_REGION="your_default_region"
 export S3_BUCKET="your_bucket_name"
 ```
 
-* Example Usage
+## Example Usage
+
+* To upload a file
+```
+awsclouduploader.sh  -add /path/to/your/file.txt
+```
+
+* To upload a file
 
 ```
-awsclouduploader.sh  /path/to/your/file.txt
+awsclouduploader.sh  -rm /path/to/your/file.txt
 ```
