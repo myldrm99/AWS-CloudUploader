@@ -4,7 +4,7 @@
 INSTALL_DIR="/usr/local/bin"
 
 # Specify the name of your CloudUploader script
-CLOUD_UPLOADER_SCRIPT="clouduploader.sh"
+CLOUD_UPLOADER_SCRIPT="awsclouduploader.sh"
 
 # Check if the installation directory exists
 if [ ! -d "$INSTALL_DIR" ]; then
