@@ -43,7 +43,7 @@ export S3_BUCKET="your_bucket_name"
 awsclouduploader.sh  -add /path/to/your/file.txt
 ```
 
-* To upload a file
+* To remove a file
 
 ```
 awsclouduploader.sh  -rm /path/to/your/file.txt
