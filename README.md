@@ -30,10 +30,10 @@ sudo ./install_awsclouduploader.sh
 * Configure the tool with your AWS credentials
   
 ```
-AWS_ACCESS_KEY_ID="your aws access key"
-AWS_SECRET_ACCESS_KEY="your aws secret access key"
-AWS_DEFAULT_REGION="your aws default region"
-S3_BUCKET="your bucket name"
+export AWS_ACCESS_KEY_ID="your_access_key_id"
+export AWS_SECRET_ACCESS_KEY="your_secret_access_key"
+export AWS_DEFAULT_REGION="your_default_region"
+export S3_BUCKET="your_bucket_name"
 ```
 
 * Example Usage
